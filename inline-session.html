@@ -247,18 +247,23 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
       }
 
       function onEndSession(session) {
-        session.end();
+        session.end().then(() => {
+          onSessionEnded({session});
+        });
       }
 
       function onSessionEnded(event) {
         // Only reset the button when the immersive session ends.
-        if (event.session.isImmersive) {
-          if (arStartedNeu){
-            xrButtonAR.setSession(null)
-          }else{
+        const session = event.session;
+        
+        if (session.isImmersive && arStartedNeu) {
+          xrButtonAR.setSession(null);
+        } else if (session.isImmersive) {
             xrButton.setSession(null);
-          }
         }
+
+        arStartedNeu = false;
+        xrImmersiveRefSpace = null;
       }
 
       // Called every time a XRSession requests that a new frame be drawn.
