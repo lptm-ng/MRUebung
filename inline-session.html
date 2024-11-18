@@ -253,7 +253,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
       function onSessionEnded(event) {
         // Only reset the button when the immersive session ends.
         if (event.session.isImmersive) {
-          if (arStarted){
+          if (arStartedNeu){
             xrButtonAR.setSession(null)
           }else{
             xrButton.setSession(null);
