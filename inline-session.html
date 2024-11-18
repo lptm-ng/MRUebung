@@ -141,7 +141,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
           // neue AR TJ
           navigator.xr.isSessionSupported('immersive-ar').then((supported) => {
-                xrButtonNeu.enabled = supported;
+                xrButtonAR.enabled = supported;
           });
 
           // Start up an inline session, which should always be supported on
@@ -168,7 +168,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
       // neue AR TJ
       function onRequestSessionAR() {
             return navigator.xr.requestSession('immersive-ar').then((session) => {
-                xrButtonNeu.setSession(session);
+                xrButtonAR.setSession(session);
                session.isImmersive = true;
                arStarted = true; // AR MODUS
                onSessionStarted(session);
