@@ -160,7 +160,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
           // Set a flag on the session so we can differentiate it from the
           // inline session.
           session.isImmersive = true; // VR MODUS
-          arStarted = false; // NICHT AR
+          arStartedNeu = false; // NICHT AR
           onSessionStarted(session);
         });
       }
@@ -170,7 +170,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
             return navigator.xr.requestSession('immersive-ar').then((session) => {
                 xrButtonAR.setSession(session);
                session.isImmersive = true;
-               arStarted = true; // AR MODUS
+               arStartedNeu = true; // AR MODUS
                onSessionStarted(session);
            });
         }
@@ -224,7 +224,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
           // neue AR TJ
           if (session.isImmersive) {
           xrImmersiveRefSpace = refSpace;
-          if (arStarted) {
+          if (session.isImmersive && arStartedNeu) {
             skybox.visible = false;  // Hide skybox for AR
 
             xrImmersiveRefSpace.addEventListener('reset', (evt) => {
